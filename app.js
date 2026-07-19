@@ -314,22 +314,6 @@ function renderHeroUML() {
         <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);letter-spacing:.08em;margin:10px 0 6px;border-top:1px solid var(--border-dim);padding-top:10px;">— methods —</div>
         ${methodsHTML}
       </div>
-    </div>
-    <div class="uml-connector">
-      <div class="uml-connector-line"></div>
-      <span style="font-family:var(--font-mono);font-size:0.65rem;">implements</span>
-      <div class="uml-connector-line"></div>
-    </div>
-    <div class="uml-node reveal reveal-delay-2">
-      <div class="uml-node-header">
-        <span class="uml-node-title">&lt;&lt;interface&gt;&gt;<br>SoftwareEngineer</span>
-        <span class="uml-node-type">interface</span>
-      </div>
-      <div class="uml-node-body">
-        <div class="uml-attr"><span class="uml-attr-vis">+</span><span class="uml-attr-name">solveProblems</span><span class="uml-attr-type">(): Solution</span></div>
-        <div class="uml-attr"><span class="uml-attr-vis">+</span><span class="uml-attr-name">writeCleanCode</span><span class="uml-attr-type">(): Codebase</span></div>
-        <div class="uml-attr"><span class="uml-attr-vis">+</span><span class="uml-attr-name">collaborateWithTeam</span><span class="uml-attr-type">(): Product</span></div>
-      </div>
     </div>`;
 
   inject('hero-uml-diagram', html);
@@ -350,7 +334,7 @@ function renderAbout() {
     { key: null,     val: null,  raw: ' *' },
     { key: ' * @description', val: null, raw: null },
     ...D.summary.match(/.{1,60}(\s|$)/g).map((chunk, i) => ({
-      key: null, val: null, raw: ` *   ${chunk.trim()}`
+      key: null, val: null, raw: ` * ${chunk.trim()}`
     })),
     { key: null,     val: null,  raw: ' *' },
     { key: ' * @param', val: 'location', raw: null, str: `"${D.personal.location}"` },

@@ -474,16 +474,12 @@ input, textarea { font-family: inherit; }
 
 .section--hero > * { position: relative; z-index: 1; }
 
-.section--hero {
+.hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "content schema";
   align-items: center;
   gap: 48px;
-  padding-left: 24px;
-  padding-right: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
 }
 
@@ -759,8 +755,14 @@ input, textarea { font-family: inherit; }
   color: var(--text-secondary);
 }
 
+.comment-body > div {
+  display: flex;
+  align-items: flex-start;
+}
+
 .comment-line-num {
   display: inline-block;
+  flex-shrink: 0;
   width: 24px;
   color: var(--text-muted);
   user-select: none;
