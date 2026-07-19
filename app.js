@@ -41,9 +41,9 @@ function esc(str) {
    ═══════════════════════════════════════ */
 
 function initTheme() {
-  const root    = document.documentElement;
-  const btn     = document.getElementById('theme-toggle');
-  const saved   = localStorage.getItem('gr-theme') || 'dark';
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('gr-theme') || 'dark';
 
   root.setAttribute('data-theme', saved);
 
@@ -59,7 +59,7 @@ function initTheme() {
    ═══════════════════════════════════════ */
 
 function initMobileMenu() {
-  const burger  = document.getElementById('hamburger');
+  const burger = document.getElementById('hamburger');
   const navList = document.getElementById('nav-links');
 
   burger.addEventListener('click', () => {
@@ -92,8 +92,8 @@ function initMobileMenu() {
    ═══════════════════════════════════════ */
 
 function initNavBehaviour() {
-  const header   = document.getElementById('site-header');
-  const links    = $$('.nav-link');
+  const header = document.getElementById('site-header');
+  const links = $$('.nav-link');
   const sections = $$('section[id]');
 
   // Sticky shadow on scroll
@@ -148,14 +148,14 @@ function initScrollReveal() {
    ═══════════════════════════════════════ */
 
 function initContactForm() {
-  const form     = document.getElementById('contact-form');
+  const form = document.getElementById('contact-form');
   const response = document.getElementById('form-response');
 
   if (!form) return;
 
   const rules = {
-    name:    { id: 'contact-name',    errId: 'name-error',    msg: 'Please enter your name.' },
-    email:   { id: 'contact-email',   errId: 'email-error',   msg: 'Please enter a valid email address.' },
+    name: { id: 'contact-name', errId: 'name-error', msg: 'Please enter your name.' },
+    email: { id: 'contact-email', errId: 'email-error', msg: 'Please enter a valid email address.' },
     subject: { id: 'contact-subject', errId: 'subject-error', msg: 'Please enter a subject.' },
     message: { id: 'contact-message', errId: 'message-error', msg: 'Please enter your message.' },
   };
@@ -163,12 +163,12 @@ function initContactForm() {
   // Live validation on blur
   Object.values(rules).forEach(({ id, errId, msg }) => {
     const input = document.getElementById(id);
-    const err   = document.getElementById(errId);
+    const err = document.getElementById(errId);
     if (!input || !err) return;
 
     input.addEventListener('blur', () => {
       const isEmail = input.type === 'email';
-      const valid   = isEmail
+      const valid = isEmail
         ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
         : input.value.trim().length > 0;
       err.textContent = valid ? '' : msg;
@@ -187,11 +187,11 @@ function initContactForm() {
 
     Object.values(rules).forEach(({ id, errId, msg }) => {
       const input = document.getElementById(id);
-      const err   = document.getElementById(errId);
+      const err = document.getElementById(errId);
       if (!input || !err) return;
 
       const isEmail = input.type === 'email';
-      const ok      = isEmail
+      const ok = isEmail
         ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
         : input.value.trim().length > 0;
 
@@ -209,8 +209,8 @@ function initContactForm() {
     btn.querySelector('span').textContent = 'Sending...';
 
     // Build mailto as fallback (no server-side backend needed for static hosting)
-    const name    = document.getElementById('contact-name').value.trim();
-    const email   = document.getElementById('contact-email').value.trim();
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
     const subject = document.getElementById('contact-subject').value.trim();
     const message = document.getElementById('contact-message').value.trim();
 
@@ -256,7 +256,7 @@ function renderHero() {
 
   // Social Links
   const links = [
-    { href: D.personal.github,   icon: 'ph ph-github-logo', label: 'GitHub',   text: '@George-Raafat' },
+    { href: D.personal.github, icon: 'ph ph-github-logo', label: 'GitHub', text: '@George-Raafat' },
     { href: D.personal.linkedin, icon: 'ph ph-linkedin-logo', label: 'LinkedIn', text: 'in/georgeraafat' },
     { href: `mailto:${D.personal.email}`, icon: 'ph ph-envelope', label: 'Email', text: D.personal.email },
   ];
@@ -273,11 +273,11 @@ function renderHero() {
 
 function renderHeroUML() {
   const attrs = [
-    { vis: '+', name: 'name',     type: 'String',  val: `"${D.personal.name}"` },
-    { vis: '+', name: 'role',     type: 'String',  val: `"${D.personal.title}"` },
-    { vis: '+', name: 'gpa',      type: 'float',   val: D.education[0].gpa.replace(' / ', '/') },
-    { vis: '+', name: 'location', type: 'String',  val: `"${D.personal.location}"` },
-    { vis: '#', name: 'focus',    type: 'Domain',  val: '"Backend & Systems"' },
+    { vis: '+', name: 'name', type: 'String', val: `"${D.personal.name}"` },
+    { vis: '+', name: 'role', type: 'String', val: `"${D.personal.title}"` },
+    { vis: '+', name: 'gpa', type: 'float', val: D.education[0].gpa.replace(' / ', '/') },
+    { vis: '+', name: 'location', type: 'String', val: `"${D.personal.location}"` },
+    { vis: '#', name: 'focus', type: 'Domain', val: '"Backend & Systems"' },
   ];
 
   const methods = [
@@ -305,7 +305,7 @@ function renderHeroUML() {
   const html = `
     <div class="uml-node reveal">
       <div class="uml-node-header">
-        <span class="uml-node-title">&lt;&lt;Engineer&gt;&gt;<br>George Raafat</span>
+        <span class="uml-node-title">&lt;&lt;Software Engineer&gt;&gt;<br>George Raafat</span>
         <span class="uml-node-type">class</span>
       </div>
       <div class="uml-node-body">
@@ -328,19 +328,19 @@ function renderAbout() {
 
   // Comment block — present summary as a JSDoc/comment block
   const lines = [
-    { key: null,     val: null,  raw: '/**' },
-    { key: ' * @class',   val: null, raw: null, keyword: D.personal.name },
+    { key: null, val: null, raw: '/**' },
+    { key: ' * @class', val: null, raw: null, keyword: D.personal.name },
     { key: ' * @extends', val: null, raw: null, keyword: 'SoftwareEngineer' },
-    { key: null,     val: null,  raw: ' *' },
+    { key: null, val: null, raw: ' *' },
     { key: ' * @description', val: null, raw: null },
     ...D.summary.match(/.{1,60}(\s|$)/g).map((chunk, i) => ({
       key: null, val: null, raw: ` * ${chunk.trim()}`
     })),
-    { key: null,     val: null,  raw: ' *' },
+    { key: null, val: null, raw: ' *' },
     { key: ' * @param', val: 'location', raw: null, str: `"${D.personal.location}"` },
-    { key: ' * @param', val: 'gpa',      raw: null, str: `${edu.gpa}` },
-    { key: ' * @param', val: 'degree',   raw: null, str: `"${edu.degree}"` },
-    { key: null,     val: null,  raw: ' */' },
+    { key: ' * @param', val: 'gpa', raw: null, str: `${edu.gpa}` },
+    { key: ' * @param', val: 'degree', raw: null, str: `"${edu.degree}"` },
+    { key: null, val: null, raw: ' */' },
   ];
 
   let lineNum = 1;
@@ -394,9 +394,9 @@ function renderAbout() {
 function renderSkills() {
   const packageIcons = {
     'Programming Languages': 'ph ph-code',
-    'Frameworks':            'ph ph-stack',
-    'Databases':             'ph ph-database',
-    'Tools & Technologies':  'ph ph-wrench',
+    'Frameworks': 'ph ph-stack',
+    'Databases': 'ph ph-database',
+    'Tools & Technologies': 'ph ph-wrench',
   };
 
   const html = Object.entries(D.skills).map(([category, items], ci) => `
@@ -449,9 +449,9 @@ function renderExperience() {
   // Education panel
   const edu = D.education[0];
   const fields = [
-    { label: 'degree',      value: edu.degree },
-    { label: 'gpa',         value: edu.gpa, className: 'gpa' },
-    { label: 'duration',    value: `${edu.startDate} → ${edu.endDate}` },
+    { label: 'degree', value: edu.degree },
+    { label: 'gpa', value: edu.gpa, className: 'gpa' },
+    { label: 'duration', value: `${edu.startDate} → ${edu.endDate}` },
   ];
 
   inject('education-panel', `
@@ -560,11 +560,11 @@ function renderContact() {
   const p = D.personal;
 
   const items = [
-    { href: `mailto:${p.email}`,  icon: 'ph ph-envelope',      text: p.email,                                           label: 'Email' },
-    { href: p.github,              icon: 'ph ph-github-logo',   text: 'github.com/George-Raafat',                        label: 'GitHub' },
-    { href: p.linkedin,            icon: 'ph ph-linkedin-logo', text: 'linkedin.com/in/georgeraafat',                    label: 'LinkedIn' },
-    { href: `tel:${p.phone.replace(/\s/g,'')}`, icon: 'ph ph-phone', text: p.phone,                                     label: 'Phone' },
-    { href: null,                  icon: 'ph ph-map-pin',       text: p.location,                                        label: 'Location' },
+    { href: `mailto:${p.email}`, icon: 'ph ph-envelope', text: p.email, label: 'Email' },
+    { href: p.github, icon: 'ph ph-github-logo', text: 'github.com/George-Raafat', label: 'GitHub' },
+    { href: p.linkedin, icon: 'ph ph-linkedin-logo', text: 'linkedin.com/in/georgeraafat', label: 'LinkedIn' },
+    { href: `tel:${p.phone.replace(/\s/g, '')}`, icon: 'ph ph-phone', text: p.phone, label: 'Phone' },
+    { href: null, icon: 'ph ph-map-pin', text: p.location, label: 'Location' },
   ];
 
   inject('contact-info', `
@@ -575,15 +575,15 @@ function renderContact() {
     </p>
     <div style="display:flex;flex-direction:column;gap:10px;">
       ${items.map(item => item.href
-        ? `<a href="${esc(item.href)}" class="contact-item" ${item.href.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="${esc(item.label)}">
+    ? `<a href="${esc(item.href)}" class="contact-item" ${item.href.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="${esc(item.label)}">
              <i class="${esc(item.icon)}" aria-hidden="true"></i>
              <span class="contact-item-text">${esc(item.text)}</span>
            </a>`
-        : `<div class="contact-item" role="listitem" aria-label="${esc(item.label)}">
+    : `<div class="contact-item" role="listitem" aria-label="${esc(item.label)}">
              <i class="${esc(item.icon)}" aria-hidden="true"></i>
              <span class="contact-item-text">${esc(item.text)}</span>
            </div>`
-      ).join('')}
+  ).join('')}
     </div>`);
 }
 
