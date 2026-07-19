@@ -91,3 +91,4 @@ Software Engineer with experience developing production ERP systems and scalable
 ## Certifications
 - **Gig-at-a-Startup** | *ALX Ventures* (Nov 2024) - [View Certificate](https://savanna.alxafrica.com/certificates/h7mr659pEx)
 - **Full Stack Software Engineering** | *ALX Africa* (Apr 2024) - [View Certificate](https://savanna.alxafrica.com/certificates/en8H5ZG72p)
+- **Rowad 2025 Back-End Development Internship** | *Banque Misr* (Sep 2025) - [View Certificate](https://sprints.ai/en-eg/journeys/learning/1342/90165383/view-certificate)

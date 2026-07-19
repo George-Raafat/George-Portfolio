@@ -198,6 +198,12 @@ export const portfolioData = {
 
   certifications: [
     {
+      name: "Rowad 2025 Back-End Development Internship",
+      institution: "Banque Misr",
+      date: "Sep 2025",
+      link: "https://sprints.ai/en-eg/journeys/learning/1342/90165383/view-certificate"
+    },
+    {
       name: "Gig-at-a-Startup",
       institution: "ALX Ventures",
       date: "Nov 2024",
