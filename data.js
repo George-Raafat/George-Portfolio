@@ -103,7 +103,7 @@ export const portfolioData = {
         "implementOfflineSearch(modes: [Semantic, Face, OCR]): SearchEngine",
         "indexImages(count: 1000, duration: '~15min'): IndexResult",
       ],
-      summary: "Smart Gallery is a modern, production-ready Android photo gallery application built with Kotlin and Jetpack Compose. It features a highly customizable design system, fluid animations, and OCR-based image search capabilities.",
+      summary: "SmartGallery is a private, completely offline app that automatically organizes your photos without using the cloud. It features everyday language search, face grouping, text recognition, and custom Smart Albums that instantly gather photos matching any theme you type.",
     },
     {
       name: "LearningManagementSystem",
@@ -195,4 +195,19 @@ export const portfolioData = {
       { name: "SQLAlchemy", icon: "devicon-sqlalchemy-original colored" },
     ],
   },
+
+  certifications: [
+    {
+      name: "Gig-at-a-Startup",
+      institution: "ALX Ventures",
+      date: "Nov 2024",
+      link: "https://savanna.alxafrica.com/certificates/h7mr659pEx",
+    },
+    {
+      name: "Full Stack Software Engineering",
+      institution: "ALX Africa",
+      date: "Apr 2024",
+      link: "https://savanna.alxafrica.com/certificates/en8H5ZG72p",
+    }
+  ]
 };

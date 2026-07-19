@@ -216,6 +216,9 @@ input, textarea { font-family: inherit; }
 }
 
 .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 400;
@@ -809,6 +812,80 @@ input, textarea { font-family: inherit; }
   animation: pulse-glow 4s ease-in-out infinite alternate;
 }
 
+/* Badges for Hero Profile */
+.hero-badge {
+  position: absolute;
+  background: rgba(15, 18, 25, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  z-index: 10;
+}
+
+.hero-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.badge-icon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+}
+
+.badge-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-content strong {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badge-content span {
+  font-size: 0.7rem;
+  color: var(--accent-2);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.badge-work {
+  top: 10px;
+  right: -80px;
+}
+
+.badge-education {
+  bottom: 10px;
+  left: -80px;
+}
+
+.badge-coffee {
+  bottom: -20px;
+  right: 10px;
+  padding: 10px;
+  border-radius: 50%;
+}
+.badge-coffee .badge-icon {
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  background: transparent;
+}
+
 /* About Meta Panel */
 .about-meta {
   display: flex;
@@ -1373,6 +1450,7 @@ input, textarea { font-family: inherit; }
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
 .project-repo-link {
@@ -1752,3 +1830,11 @@ input, textarea { font-family: inherit; }
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
+ 
+ @ m e d i a   ( m a x - w i d t h :   7 6 8 p x )   {  
+     . b a d g e - w o r k   {   r i g h t :   - 2 0 p x ;   t o p :   - 1 0 p x ;   t r a n s f o r m :   s c a l e ( 0 . 8 5 ) ;   t r a n s f o r m - o r i g i n :   t o p   r i g h t ;   }  
+     . b a d g e - e d u c a t i o n   {   l e f t :   - 2 0 p x ;   b o t t o m :   0 ;   t r a n s f o r m :   s c a l e ( 0 . 8 5 ) ;   t r a n s f o r m - o r i g i n :   b o t t o m   l e f t ;   }  
+     . b a d g e - c o f f e e   {   r i g h t :   2 0 p x ;   b o t t o m :   - 1 0 p x ;   }  
+     . h e r o - b a d g e : h o v e r   {   t r a n s f o r m :   s c a l e ( 0 . 8 5 )   t r a n s l a t e Y ( - 2 p x ) ;   }  
+ }  
+ 

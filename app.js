@@ -320,74 +320,6 @@ function renderHeroUML() {
 }
 
 /* ═══════════════════════════════════════
-   8. RENDER — ABOUT
-   ═══════════════════════════════════════ */
-
-function renderAbout() {
-  const edu = D.education[0];
-
-  // Comment block — present summary as a JSDoc/comment block
-  const lines = [
-    { key: null, val: null, raw: '/**' },
-    { key: ' * @class', val: null, raw: null, keyword: D.personal.name },
-    { key: ' * @extends', val: null, raw: null, keyword: 'SoftwareEngineer' },
-    { key: null, val: null, raw: ' *' },
-    { key: ' * @description', val: null, raw: null },
-    ...D.summary.match(/.{1,60}(\s|$)/g).map((chunk, i) => ({
-      key: null, val: null, raw: ` * ${chunk.trim()}`
-    })),
-    { key: null, val: null, raw: ' *' },
-    { key: ' * @param', val: 'location', raw: null, str: `"${D.personal.location}"` },
-    { key: ' * @param', val: 'gpa', raw: null, str: `${edu.gpa}` },
-    { key: ' * @param', val: 'degree', raw: null, str: `"${edu.degree}"` },
-    { key: null, val: null, raw: ' */' },
-  ];
-
-  let lineNum = 1;
-  const bodyHTML = lines.map(l => {
-    const num = `<span class="comment-line-num">${String(lineNum++).padStart(2, ' ')}</span>`;
-    if (l.raw) {
-      return `<div>${num}<span class="comment-text" style="color:var(--text-muted)">${esc(l.raw)}</span></div>`;
-    }
-    if (l.keyword) {
-      return `<div>${num}<span class="comment-keyword">${esc(l.key)}</span> <span class="comment-string">${esc(l.keyword)}</span></div>`;
-    }
-    if (l.str) {
-      return `<div>${num}<span class="comment-keyword">${esc(l.key)}</span> <span class="comment-value">${esc(l.val)}</span> <span class="comment-string">${esc(l.str)}</span></div>`;
-    }
-    if (l.key === ' * @description') {
-      return `<div>${num}<span class="comment-keyword">${esc(l.key)}</span></div>`;
-    }
-    return '';
-  }).filter(Boolean).join('\n');
-
-  inject('about-comment-block', `
-    <div class="comment-header">
-      <div class="comment-dot"></div>
-      <div class="comment-dot"></div>
-      <div class="comment-dot"></div>
-      <span class="comment-file-label">George.java</span>
-    </div>
-    <div class="comment-body">${bodyHTML}</div>
-  `);
-
-  // Meta cards
-  const metaCards = [
-    { label: 'GPA', value: edu.gpa, accent: true },
-    { label: 'Degree', value: edu.degree },
-    { label: 'Institution', value: `${edu.institution} — ${edu.faculty}` },
-    { label: 'Graduation', value: `${edu.startDate} → ${edu.endDate}` },
-    { label: 'Specialization', value: 'Back-end Development & System Design' },
-  ];
-
-  inject('about-meta', metaCards.map((c, i) => `
-    <div class="meta-card reveal ${i > 0 ? `reveal-delay-${Math.min(i, 4)}` : ''}">
-      <div class="meta-card-label">${esc(c.label)}</div>
-      <div class="meta-card-value ${c.accent ? 'accent' : ''}">${esc(c.value)}</div>
-    </div>`).join(''));
-}
-
-/* ═══════════════════════════════════════
    9. RENDER — SKILLS
    ═══════════════════════════════════════ */
 
@@ -404,7 +336,6 @@ function renderSkills() {
       <div class="skill-package-header">
         <i class="${esc(packageIcons[category] || 'ph ph-cube')}" aria-hidden="true"></i>
         <span class="skill-package-name">${esc(category)}</span>
-        <span class="skill-package-count">${items.length} items</span>
       </div>
       <ul class="skill-list" role="list">
         ${items.map(skill => `
@@ -467,6 +398,22 @@ function renderExperience() {
           <span class="education-field-label">${esc(f.label)}</span>
           <span class="education-field-value ${f.className || ''}">${esc(f.value)}</span>
         </div>`).join('')}
+    </div>
+    
+    <div class="education-panel-header" style="margin-top: 30px;">
+      <i class="ph ph-certificate" aria-hidden="true"></i>
+      <span class="education-panel-title">// Certifications</span>
+    </div>
+    <div class="education-body reveal">
+      ${D.certifications ? D.certifications.map(c => `
+        <div style="margin-bottom: 20px;">
+          <p class="education-institution" style="font-size: 0.85rem;"><a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;" aria-label="View ${esc(c.name)} Certificate">${esc(c.name)} <i class="ph ph-arrow-square-out" style="font-size: 0.9em; color: var(--accent);"></i></a></p>
+          <p class="education-faculty secondary" style="font-size: 0.75rem; margin-bottom: 8px;">${esc(c.institution)}</p>
+          <div class="education-field">
+            <span class="education-field-label">date</span>
+            <span class="education-field-value mono" style="font-size: 0.75rem;">${esc(c.date)}</span>
+          </div>
+        </div>`).join('') : ''}
     </div>`);
 }
 
@@ -605,7 +552,6 @@ function init() {
   // Render all content sections
   renderNav();
   renderHero();
-  renderAbout();
   renderSkills();
   renderExperience();
   renderProjects();

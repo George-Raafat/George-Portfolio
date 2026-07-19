@@ -120,5 +120,19 @@
     "databases": ["MySQL", "PostgreSQL", "SQLite", "SQL Server", "MongoDB"],
     "toolsAndTechnologies": ["Git", "Docker", "Linux", "Nginx", "Prisma", "ONNX Runtime", "SQLAlchemy"],
     "softSkills": ["Communication", "Teamwork", "Time Management", "Attention to Detail", "Clean Code Practices", "System Architecture & Design"]
-  }
+  },
+  "certifications": [
+    {
+      "name": "Gig-at-a-Startup",
+      "institution": "ALX Ventures",
+      "date": "Nov 2024",
+      "link": "https://savanna.alxafrica.com/certificates/h7mr659pEx"
+    },
+    {
+      "name": "Full Stack Software Engineering",
+      "institution": "ALX Africa",
+      "date": "Apr 2024",
+      "link": "https://savanna.alxafrica.com/certificates/en8H5ZG72p"
+    }
+  ]
 }

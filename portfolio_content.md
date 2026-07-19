@@ -87,3 +87,7 @@ Software Engineer with experience developing production ERP systems and scalable
 - **Databases**: MySQL, PostgreSQL, SQLite, SQL Server, MongoDB
 - **Tools & Technologies**: Git, Docker, Linux, Nginx, Prisma, ONNX Runtime, SQLAlchemy
 - **Soft Skills**: Communication, Teamwork, Time Management, Attention to Detail, Clean Code Practices, System Architecture & Design
+
+## Certifications
+- **Gig-at-a-Startup** | *ALX Ventures* (Nov 2024) - [View Certificate](https://savanna.alxafrica.com/certificates/h7mr659pEx)
+- **Full Stack Software Engineering** | *ALX Africa* (Apr 2024) - [View Certificate](https://savanna.alxafrica.com/certificates/en8H5ZG72p)
