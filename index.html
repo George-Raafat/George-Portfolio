@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="George Raafat — Back-end Software Engineer. Production ERP systems, scalable APIs, Spring Boot, Docker, and system architecture." />
+  <meta name="keywords" content="George Raafat, Backend Developer, Software Engineer, Spring Boot, Docker, Cairo, Portfolio" />
+  <meta name="author" content="George Raafat" />
+  <meta property="og:title" content="George Raafat | Back-end Software Engineer" />
+  <meta property="og:description" content="Production ERP systems, scalable APIs, Spring Boot, Docker, and system architecture." />
+  <meta property="og:type" content="website" />
+  <title>George Raafat | Back-end Software Engineer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Devicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       HEADER / NAVIGATION
+       ══════════════════════════════════════════════════════ -->
+  <header id="site-header" role="banner">
+    <nav class="nav-container" aria-label="Primary navigation">
+      <a href="#hero" class="nav-logo" id="nav-logo" aria-label="George Raafat home">
+        <!-- Injected by app.js -->
+      </a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <i class="ph ph-sun" id="theme-icon-light" aria-hidden="true"></i>
+          <i class="ph ph-moon" id="theme-icon-dark" aria-hidden="true"></i>
+        </button>
+        <button id="hamburger" class="btn-icon hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="nav-links">
+          <i class="ph ph-list" aria-hidden="true"></i>
+          <i class="ph ph-x" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="site-grid-bg" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════════
+         HERO SECTION
+         ════════════════════════════════════════ -->
+    <section id="hero" class="section section--hero" aria-labelledby="hero-name">
+      <div class="hero-content">
+        <div class="hero-tag" id="hero-tag"><!-- Injected --></div>
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name" id="hero-name"><!-- Injected --></h1>
+        <div class="hero-title-wrapper">
+          <span class="hero-title-prefix">&gt;&gt;</span>
+          <span class="hero-title" id="hero-title" aria-live="polite"><!-- Injected --></span>
+          <span class="hero-cursor" aria-hidden="true">_</span>
+        </div>
+        <p class="hero-summary" id="hero-summary"><!-- Injected --></p>
+
+        <div class="hero-links-wrapper">
+          <span class="hero-links-label"><span class="mono">$ find_me --on</span></span>
+          <div class="hero-links" id="hero-links"><!-- Injected --></div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn--primary">
+            <i class="ph ph-folder-open" aria-hidden="true"></i>
+            View Projects
+          </a>
+          <a href="#contact" class="btn btn--outline">
+            <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+            Get In Touch
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-schema" aria-hidden="true">
+        <div class="hero-profile">
+          <img src="George profile photo.jpeg" alt="George Raafat" class="profile-img" />
+          <div class="profile-glow" aria-hidden="true"></div>
+        </div>
+        <!-- Decorative UML node diagram, injected by app.js -->
+        <div id="hero-uml-diagram"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         ABOUT SECTION
+         ════════════════════════════════════════ -->
+    <section id="about" class="section section--about" aria-labelledby="about-heading">
+      <div class="section-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+      <div class="container">
+        <header class="section-header">
+          <div class="section-badge" aria-hidden="true">// module</div>
+          <h2 class="section-title" id="about-heading">About</h2>
+          <div class="section-title-underline" aria-hidden="true"></div>
+        </header>
+
+        <div class="about-layout">
+          <div class="about-comment-block" id="about-comment-block">
+            <!-- Injected by app.js -->
+          </div>
+          <div class="about-meta" id="about-meta">
+            <!-- Injected by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         SKILLS SECTION
+         ════════════════════════════════════════ -->
+    <section id="skills" class="section section--skills" aria-labelledby="skills-heading">
+      <div class="section-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+      <div class="container">
+        <header class="section-header">
+          <div class="section-badge" aria-hidden="true">// package</div>
+          <h2 class="section-title" id="skills-heading">Skills</h2>
+          <div class="section-title-underline" aria-hidden="true"></div>
+        </header>
+
+        <div class="skills-grid" id="skills-grid">
+          <!-- Injected by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         EXPERIENCE SECTION
+         ════════════════════════════════════════ -->
+    <section id="experience" class="section section--experience" aria-labelledby="experience-heading">
+      <div class="section-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+      <div class="container">
+        <header class="section-header">
+          <div class="section-badge" aria-hidden="true">// activity</div>
+          <h2 class="section-title" id="experience-heading">Experience</h2>
+          <div class="section-title-underline" aria-hidden="true"></div>
+        </header>
+
+        <div class="experience-layout">
+          <div class="timeline" id="experience-timeline">
+            <!-- Injected by app.js -->
+          </div>
+          <div class="education-panel" id="education-panel">
+            <!-- Injected by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         PROJECTS SECTION
+         ════════════════════════════════════════ -->
+    <section id="projects" class="section section--projects" aria-labelledby="projects-heading">
+      <div class="section-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+      <div class="container">
+        <header class="section-header">
+          <div class="section-badge" aria-hidden="true">// class_diagram</div>
+          <h2 class="section-title" id="projects-heading">Projects</h2>
+          <div class="section-title-underline" aria-hidden="true"></div>
+        </header>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Injected by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CONTACT SECTION
+         ════════════════════════════════════════ -->
+    <section id="contact" class="section section--contact" aria-labelledby="contact-heading">
+      <div class="section-connector" aria-hidden="true">
+        <div class="connector-line"></div>
+        <div class="connector-dot"></div>
+      </div>
+      <div class="container">
+        <header class="section-header">
+          <div class="section-badge" aria-hidden="true">// endpoint</div>
+          <h2 class="section-title" id="contact-heading">Contact</h2>
+          <div class="section-title-underline" aria-hidden="true"></div>
+        </header>
+
+        <div class="contact-layout">
+          <div class="contact-info" id="contact-info">
+            <!-- Injected by app.js -->
+          </div>
+
+          <form class="contact-form" id="contact-form" aria-label="Contact form — POST /api/contact" novalidate>
+            <div class="form-header" aria-hidden="true">
+              <span class="method-badge method-post">POST</span>
+              <span class="mono">/api/contact</span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-name" class="form-label">
+                <span class="form-key">"from_name"</span>: <span class="form-type">string</span>
+              </label>
+              <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name..." autocomplete="name" required />
+              <span class="form-error" id="name-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-email" class="form-label">
+                <span class="form-key">"reply_to"</span>: <span class="form-type">email</span>
+              </label>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="your@email.com" autocomplete="email" required />
+              <span class="form-error" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-subject" class="form-label">
+                <span class="form-key">"subject"</span>: <span class="form-type">string</span>
+              </label>
+              <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Message subject..." required />
+              <span class="form-error" id="subject-error" role="alert"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message" class="form-label">
+                <span class="form-key">"body"</span>: <span class="form-type">text</span>
+              </label>
+              <textarea id="contact-message" name="message" class="form-input form-textarea" rows="5" placeholder="Your message..." required></textarea>
+              <span class="form-error" id="message-error" role="alert"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full" id="form-submit">
+              <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+              <span>Send Request</span>
+            </button>
+            <div class="form-response" id="form-response" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════ -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy" id="footer-copy"><!-- Injected --></p>
+      <p class="mono footer-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>System: Online</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
