@@ -815,7 +815,7 @@ input, textarea { font-family: inherit; }
 /* Badges for Hero Profile */
 .hero-badge {
   position: absolute;
-  background: rgba(15, 18, 25, 0.85);
+  background: color-mix(in srgb, var(--bg-card) 85%, transparent);
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   border-radius: 12px;
