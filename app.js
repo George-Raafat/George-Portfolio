@@ -398,23 +398,29 @@ function renderExperience() {
           <span class="education-field-label">${esc(f.label)}</span>
           <span class="education-field-value ${f.className || ''}">${esc(f.value)}</span>
         </div>`).join('')}
-    </div>
-    
-    <div class="education-panel-header" style="margin-top: 30px;">
-      <i class="ph ph-certificate" aria-hidden="true"></i>
-      <span class="education-panel-title">// Certifications</span>
-    </div>
-    <div class="education-body reveal">
-      ${D.certifications ? D.certifications.map(c => `
-        <div style="margin-bottom: 20px;">
-          <p class="education-institution" style="font-size: 0.85rem;"><a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;" aria-label="View ${esc(c.name)} Certificate">${esc(c.name)} <i class="ph ph-arrow-square-out" style="font-size: 0.9em; color: var(--accent);"></i></a></p>
-          <p class="education-faculty secondary" style="font-size: 0.75rem; margin-bottom: 8px;">${esc(c.institution)}</p>
-          <div class="education-field">
-            <span class="education-field-label">date</span>
-            <span class="education-field-value mono" style="font-size: 0.75rem;">${esc(c.date)}</span>
-          </div>
-        </div>`).join('') : ''}
     </div>`);
+
+  if (D.certifications && D.certifications.length > 0) {
+    inject('certifications-panel', `
+      <div class="education-panel-header">
+        <i class="ph ph-certificate" aria-hidden="true"></i>
+        <span class="education-panel-title">// Certifications</span>
+      </div>
+      <div class="education-body reveal">
+        ${D.certifications.map(c => `
+          <div style="margin-bottom: 20px;">
+            <p class="education-institution" style="font-size: 0.85rem;"><a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;" aria-label="View ${esc(c.name)} Certificate">${esc(c.name)} <i class="ph ph-arrow-square-out" style="font-size: 0.9em; color: var(--accent);"></i></a></p>
+            <p class="education-faculty secondary" style="font-size: 0.75rem; margin-bottom: 8px;">${esc(c.institution)}</p>
+            <div class="education-field">
+              <span class="education-field-label">date</span>
+              <span class="education-field-value mono" style="font-size: 0.75rem;">${esc(c.date)}</span>
+            </div>
+          </div>`).join('')}
+      </div>`);
+  } else {
+    const el = document.getElementById('certifications-panel');
+    if (el) el.style.display = 'none';
+  }
 }
 
 /* ═══════════════════════════════════════
