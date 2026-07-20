@@ -19,7 +19,7 @@ export const portfolioData = {
   },
 
   summary:
-    "Software Engineer with experience developing production ERP systems and scalable backend applications. Skilled in REST APIs, database design, Docker, and collaborative development. Top student with a 3.8/4.0 GPA, known for exceptional attention to detail, writing clean code, and designing coherent, scalable systems.",
+    "Software Engineer with experience developing production ERP systems and scalable backend applications. Skilled in REST APIs, database design, Docker, and collaborative development. Top graduate with a 3.8/4.0 GPA, known for exceptional attention to detail, writing clean code, and designing coherent, scalable systems.",
 
   education: [
     {
@@ -170,12 +170,12 @@ export const portfolioData = {
       { name: "C", icon: "devicon-c-plain colored" },
     ],
     Frameworks: [
+      { name: "Frappe/ERPNext", icon: "devicon-python-plain" },
+      { name: "Next.js", icon: "devicon-nextjs-plain" },
+      { name: "Nest.js", icon: "devicon-nestjs-plain colored" },
       { name: "Spring Boot", icon: "devicon-spring-plain colored" },
-      { name: "Frappe", icon: "devicon-python-plain" },
       { name: "Flask", icon: "devicon-flask-original" },
       { name: "Django", icon: "devicon-django-plain colored" },
-      { name: "Nest.js", icon: "devicon-nestjs-plain colored" },
-      { name: "Next.js", icon: "devicon-nextjs-original" },
       { name: "Jetpack Compose", icon: "devicon-android-plain colored" },
     ],
     Databases: [
@@ -192,7 +192,7 @@ export const portfolioData = {
       { name: "Nginx", icon: "devicon-nginx-original colored" },
       { name: "Prisma", icon: "devicon-prisma-original" },
       { name: "ONNX Runtime", icon: "devicon-python-plain" },
-      { name: "SQLAlchemy", icon: "devicon-sqlalchemy-original colored" },
+      { name: "SQLAlchemy", icon: "devicon-sqlalchemy-plain" },
     ],
   },
 

@@ -14,7 +14,7 @@ Software Engineer with experience developing production ERP systems and scalable
 
 > [!TIP]
 > **Key Selling Points for Portfolio**: 
-> - Top student in his year with a high GPA (3.8/4.0).
+> - Top graduate in his year with a high GPA (3.8/4.0).
 > - Exceptional attention to detail and a talent for writing clean code.
 > - Proven ability to design and build coherent, clean, and scalable systems.
 
