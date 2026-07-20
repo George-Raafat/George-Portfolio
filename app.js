@@ -10,7 +10,7 @@
  *      contact form validation, and micro-interactions
  */
 
-import { portfolioData as D } from './data.js';
+import { portfolioData as D } from "./data.js";
 
 /* ═══════════════════════════════════════
    UTILITIES
@@ -30,10 +30,10 @@ function inject(id, html) {
 /** Escape HTML entities for safe text rendering */
 function esc(str) {
   return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 /* ═══════════════════════════════════════
@@ -42,15 +42,15 @@ function esc(str) {
 
 function initTheme() {
   const root = document.documentElement;
-  const btn = document.getElementById('theme-toggle');
-  const saved = localStorage.getItem('gr-theme') || 'dark';
+  const btn = document.getElementById("theme-toggle");
+  const saved = localStorage.getItem("gr-theme") || "dark";
 
-  root.setAttribute('data-theme', saved);
+  root.setAttribute("data-theme", saved);
 
-  btn.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('gr-theme', next);
+  btn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("gr-theme", next);
   });
 }
 
@@ -59,30 +59,30 @@ function initTheme() {
    ═══════════════════════════════════════ */
 
 function initMobileMenu() {
-  const burger = document.getElementById('hamburger');
-  const navList = document.getElementById('nav-links');
+  const burger = document.getElementById("hamburger");
+  const navList = document.getElementById("nav-links");
 
-  burger.addEventListener('click', () => {
-    const isOpen = navList.classList.toggle('open');
-    burger.classList.toggle('open', isOpen);
-    burger.setAttribute('aria-expanded', String(isOpen));
+  burger.addEventListener("click", () => {
+    const isOpen = navList.classList.toggle("open");
+    burger.classList.toggle("open", isOpen);
+    burger.setAttribute("aria-expanded", String(isOpen));
   });
 
   // Close when a nav link is clicked
-  navList.addEventListener('click', (e) => {
-    if (e.target.classList.contains('nav-link')) {
-      navList.classList.remove('open');
-      burger.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
+  navList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("nav-link")) {
+      navList.classList.remove("open");
+      burger.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
     }
   });
 
   // Close on outside click
-  document.addEventListener('click', (e) => {
+  document.addEventListener("click", (e) => {
     if (!burger.contains(e.target) && !navList.contains(e.target)) {
-      navList.classList.remove('open');
-      burger.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
+      navList.classList.remove("open");
+      burger.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
     }
   });
 }
@@ -92,18 +92,18 @@ function initMobileMenu() {
    ═══════════════════════════════════════ */
 
 function initNavBehaviour() {
-  const header = document.getElementById('site-header');
-  const links = $$('.nav-link');
-  const sections = $$('section[id]');
+  const header = document.getElementById("site-header");
+  const links = $$(".nav-link");
+  const sections = $$("section[id]");
 
   // Sticky shadow on scroll
   const handleScroll = () => {
-    header.classList.toggle('scrolled', window.scrollY > 20);
+    header.classList.toggle("scrolled", window.scrollY > 20);
 
     // Active link highlighting via IntersectionObserver
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener("scroll", handleScroll, { passive: true });
 
   // Intersection Observer for active section highlighting
   const observer = new IntersectionObserver(
@@ -112,12 +112,12 @@ function initNavBehaviour() {
         if (entry.isIntersecting) {
           const id = entry.target.id;
           links.forEach((a) => {
-            a.classList.toggle('active', a.dataset.section === id);
+            a.classList.toggle("active", a.dataset.section === id);
           });
         }
       });
     },
-    { threshold: 0.3, rootMargin: `-${64}px 0px -40% 0px` }
+    { threshold: 0.3, rootMargin: `-${64}px 0px -40% 0px` },
   );
 
   sections.forEach((s) => observer.observe(s));
@@ -132,15 +132,15 @@ function initScrollReveal() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
+          entry.target.classList.add("revealed");
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
   );
 
-  $$('.reveal').forEach((el) => observer.observe(el));
+  $$(".reveal").forEach((el) => observer.observe(el));
 }
 
 /* ═══════════════════════════════════════
@@ -148,16 +148,32 @@ function initScrollReveal() {
    ═══════════════════════════════════════ */
 
 function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const response = document.getElementById('form-response');
+  const form = document.getElementById("contact-form");
+  const response = document.getElementById("form-response");
 
   if (!form) return;
 
   const rules = {
-    name: { id: 'contact-name', errId: 'name-error', msg: 'Please enter your name.' },
-    email: { id: 'contact-email', errId: 'email-error', msg: 'Please enter a valid email address.' },
-    subject: { id: 'contact-subject', errId: 'subject-error', msg: 'Please enter a subject.' },
-    message: { id: 'contact-message', errId: 'message-error', msg: 'Please enter your message.' },
+    name: {
+      id: "contact-name",
+      errId: "name-error",
+      msg: "Please enter your name.",
+    },
+    email: {
+      id: "contact-email",
+      errId: "email-error",
+      msg: "Please enter a valid email address.",
+    },
+    subject: {
+      id: "contact-subject",
+      errId: "subject-error",
+      msg: "Please enter a subject.",
+    },
+    message: {
+      id: "contact-message",
+      errId: "message-error",
+      msg: "Please enter your message.",
+    },
   };
 
   // Live validation on blur
@@ -166,22 +182,22 @@ function initContactForm() {
     const err = document.getElementById(errId);
     if (!input || !err) return;
 
-    input.addEventListener('blur', () => {
-      const isEmail = input.type === 'email';
+    input.addEventListener("blur", () => {
+      const isEmail = input.type === "email";
       const valid = isEmail
         ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
         : input.value.trim().length > 0;
-      err.textContent = valid ? '' : msg;
-      input.style.borderColor = valid ? '' : 'var(--accent-error)';
+      err.textContent = valid ? "" : msg;
+      input.style.borderColor = valid ? "" : "var(--accent-error)";
     });
 
-    input.addEventListener('input', () => {
-      err.textContent = '';
-      input.style.borderColor = '';
+    input.addEventListener("input", () => {
+      err.textContent = "";
+      input.style.borderColor = "";
     });
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     let valid = true;
 
@@ -190,38 +206,38 @@ function initContactForm() {
       const err = document.getElementById(errId);
       if (!input || !err) return;
 
-      const isEmail = input.type === 'email';
+      const isEmail = input.type === "email";
       const ok = isEmail
         ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())
         : input.value.trim().length > 0;
 
       if (!ok) {
         err.textContent = msg;
-        input.style.borderColor = 'var(--accent-error)';
+        input.style.borderColor = "var(--accent-error)";
         valid = false;
       }
     });
 
     if (!valid) return;
 
-    const btn = document.getElementById('form-submit');
+    const btn = document.getElementById("form-submit");
     btn.disabled = true;
-    btn.querySelector('span').textContent = 'Sending...';
+    btn.querySelector("span").textContent = "Sending...";
 
     // Build mailto as fallback (no server-side backend needed for static hosting)
-    const name = document.getElementById('contact-name').value.trim();
-    const email = document.getElementById('contact-email').value.trim();
-    const subject = document.getElementById('contact-subject').value.trim();
-    const message = document.getElementById('contact-message').value.trim();
+    const name = document.getElementById("contact-name").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
+    const subject = document.getElementById("contact-subject").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
 
     const mailto = `mailto:${esc(D.personal.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} <${email}>\n\n${message}`)}`;
 
     setTimeout(() => {
       window.location.href = mailto;
-      response.textContent = '// Response: 200 OK — Email client opened.';
-      response.className = 'form-response success';
+      response.textContent = "// Response: 200 OK — Email client opened.";
+      response.className = "form-response success";
       btn.disabled = false;
-      btn.querySelector('span').textContent = 'Send Request';
+      btn.querySelector("span").textContent = "Send Request";
     }, 600);
   });
 }
@@ -231,7 +247,7 @@ function initContactForm() {
    ═══════════════════════════════════════ */
 
 function renderNav() {
-  const logo = document.getElementById('nav-logo');
+  const logo = document.getElementById("nav-logo");
   if (logo) {
     logo.innerHTML = `<span class="mono">&lt;</span>${esc(D.personal.initials)}<span class="mono">/&gt;</span>`;
   }
@@ -243,29 +259,51 @@ function renderNav() {
 
 function renderHero() {
   // Tag
-  inject('hero-tag', `// ${esc(D.personal.location)}`);
+  inject("hero-tag", `// ${esc(D.personal.location)}`);
 
   // Name & Title
-  inject('hero-name', esc(D.personal.name));
-  inject('hero-title', esc(D.personal.title));
+  inject("hero-name", esc(D.personal.name));
+  inject("hero-title", esc(D.personal.title));
 
   // Summary
-  inject('hero-summary', esc(D.personal.title === D.summary ? '' : D.summary));
-  const summaryEl = document.getElementById('hero-summary');
+  inject("hero-summary", esc(D.personal.title === D.summary ? "" : D.summary));
+  const summaryEl = document.getElementById("hero-summary");
   if (summaryEl) summaryEl.textContent = D.summary;
 
   // Social Links
   const links = [
-    { href: D.personal.github, icon: 'ph ph-github-logo', label: 'GitHub', text: '@George-Raafat' },
-    { href: D.personal.linkedin, icon: 'ph ph-linkedin-logo', label: 'LinkedIn', text: 'in/georgeraafat' },
-    { href: `mailto:${D.personal.email}`, icon: 'ph ph-envelope', label: 'Email', text: D.personal.email },
+    {
+      href: D.personal.github,
+      icon: "ph ph-github-logo",
+      label: "GitHub",
+      text: "@George-Raafat",
+    },
+    {
+      href: D.personal.linkedin,
+      icon: "ph ph-linkedin-logo",
+      label: "LinkedIn",
+      text: "in/georgeraafat",
+    },
+    {
+      href: `mailto:${D.personal.email}`,
+      icon: "ph ph-envelope",
+      label: "Email",
+      text: D.personal.email,
+    },
   ];
 
-  inject('hero-links', links.map(l => `
+  inject(
+    "hero-links",
+    links
+      .map(
+        (l) => `
     <a href="${esc(l.href)}" class="hero-link" target="_blank" rel="noopener noreferrer" aria-label="${esc(l.label)}">
       <i class="${esc(l.icon)}" aria-hidden="true"></i>
       <span>${esc(l.text)}</span>
-    </a>`).join(''));
+    </a>`,
+      )
+      .join(""),
+  );
 
   // UML Diagram (decorative system node)
   renderHeroUML();
@@ -273,34 +311,52 @@ function renderHero() {
 
 function renderHeroUML() {
   const attrs = [
-    { vis: '+', name: 'name', type: 'String', val: `"${D.personal.name}"` },
-    { vis: '+', name: 'role', type: 'String', val: `"${D.personal.title}"` },
-    { vis: '+', name: 'gpa', type: 'float', val: D.education[0].gpa.replace(' / ', '/') },
-    { vis: '+', name: 'location', type: 'String', val: `"${D.personal.location}"` },
-    { vis: '#', name: 'focus', type: 'Domain', val: '"Backend & Systems"' },
+    { vis: "+", name: "name", type: "String", val: `"${D.personal.name}"` },
+    { vis: "+", name: "role", type: "String", val: `"${D.personal.title}"` },
+    {
+      vis: "+",
+      name: "gpa",
+      type: "float",
+      val: D.education[0].gpa.replace(" / ", "/"),
+    },
+    {
+      vis: "+",
+      name: "location",
+      type: "String",
+      val: `"${D.personal.location}"`,
+    },
+    { vis: "#", name: "focus", type: "Domain", val: '"Backend & Systems"' },
   ];
 
   const methods = [
-    { name: 'buildSystem', params: 'spec: Requirements', ret: 'Architecture' },
-    { name: 'deployToCloud', params: 'env: Docker', ret: 'ServiceURL' },
-    { name: 'designSchema', params: 'domain: ERD', ret: 'Database' },
-    { name: 'optimizeQuery', params: 'sql: Query', ret: 'QueryPlan' },
+    { name: "buildSystem", params: "spec: Requirements", ret: "Architecture" },
+    { name: "deployToCloud", params: "env: Docker", ret: "ServiceURL" },
+    { name: "designSchema", params: "domain: ERD", ret: "Database" },
+    { name: "optimizeQuery", params: "sql: Query", ret: "QueryPlan" },
   ];
 
-  const attrsHTML = attrs.map(a => `
+  const attrsHTML = attrs
+    .map(
+      (a) => `
     <div class="uml-attr">
       <span class="uml-attr-vis">${esc(a.vis)}</span>
       <span class="uml-attr-name">${esc(a.name)}</span>
       <span class="uml-attr-type">: ${esc(a.type)}</span>
       <span style="color:var(--text-muted); margin-left:4px;">= ${esc(a.val)}</span>
-    </div>`).join('');
+    </div>`,
+    )
+    .join("");
 
-  const methodsHTML = methods.map(m => `
+  const methodsHTML = methods
+    .map(
+      (m) => `
     <div class="uml-attr">
       <span class="uml-attr-vis">+</span>
       <span class="uml-attr-name" style="color:var(--accent)">${esc(m.name)}</span>
       <span class="uml-attr-type">(${esc(m.params)}): ${esc(m.ret)}</span>
-    </div>`).join('');
+    </div>`,
+    )
+    .join("");
 
   const html = `
     <div class="uml-node reveal">
@@ -316,7 +372,7 @@ function renderHeroUML() {
       </div>
     </div>`;
 
-  inject('hero-uml-diagram', html);
+  inject("hero-uml-diagram", html);
 }
 
 /* ═══════════════════════════════════════
@@ -325,28 +381,36 @@ function renderHeroUML() {
 
 function renderSkills() {
   const packageIcons = {
-    'Programming Languages': 'ph ph-code',
-    'Frameworks': 'ph ph-stack',
-    'Databases': 'ph ph-database',
-    'Tools & Technologies': 'ph ph-wrench',
+    "Programming Languages": "ph ph-code",
+    Frameworks: "ph ph-stack",
+    Databases: "ph ph-database",
+    "Tools & Technologies": "ph ph-wrench",
   };
 
-  const html = Object.entries(D.skills).map(([category, items], ci) => `
-    <div class="skill-package reveal ${ci > 0 ? `reveal-delay-${Math.min(ci, 4)}` : ''}">
+  const html = Object.entries(D.skills)
+    .map(
+      ([category, items], ci) => `
+    <div class="skill-package reveal ${ci > 0 ? `reveal-delay-${Math.min(ci, 4)}` : ""}">
       <div class="skill-package-header">
-        <i class="${esc(packageIcons[category] || 'ph ph-cube')}" aria-hidden="true"></i>
+        <i class="${esc(packageIcons[category] || "ph ph-cube")}" aria-hidden="true"></i>
         <span class="skill-package-name">${esc(category)}</span>
       </div>
       <ul class="skill-list" role="list">
-        ${items.map(skill => `
+        ${items
+          .map(
+            (skill) => `
           <li class="skill-item">
             <i class="${esc(skill.icon)}" title="${esc(skill.name)}" aria-hidden="true"></i>
             <span class="skill-item-name">${esc(skill.name)}</span>
-          </li>`).join('')}
+          </li>`,
+          )
+          .join("")}
       </ul>
-    </div>`).join('');
+    </div>`,
+    )
+    .join("");
 
-  inject('skills-grid', html);
+  inject("skills-grid", html);
 }
 
 /* ═══════════════════════════════════════
@@ -355,13 +419,15 @@ function renderSkills() {
 
 function renderExperience() {
   // Timeline
-  const timelineHTML = D.experience.map((job, i) => `
-    <div class="timeline-item reveal ${i > 0 ? `reveal-delay-${Math.min(i, 4)}` : ''}">
-      <div class="timeline-dot ${job.endDate.toLowerCase() === 'present' ? 'timeline-dot--present' : ''}" aria-hidden="true"></div>
+  const timelineHTML = D.experience
+    .map(
+      (job, i) => `
+    <div class="timeline-item reveal ${i > 0 ? `reveal-delay-${Math.min(i, 4)}` : ""}">
+      <div class="timeline-dot ${job.endDate.toLowerCase() === "present" ? "timeline-dot--present" : ""}" aria-hidden="true"></div>
       <article class="timeline-card">
         <header class="timeline-card-header">
           <h3 class="timeline-company">${esc(job.company)}</h3>
-          <p class="timeline-role mono">${esc(job.role)}${job.roleSubtitle ? ` <span style="color:var(--text-muted)">(${esc(job.roleSubtitle)})</span>` : ''}</p>
+          <p class="timeline-role mono">${esc(job.role)}${job.roleSubtitle ? ` <span style="color:var(--text-muted)">(${esc(job.roleSubtitle)})</span>` : ""}</p>
           <div class="timeline-meta">
             <span class="timeline-date mono">${esc(job.startDate)} – ${esc(job.endDate)}</span>
             <span class="timeline-type mono">${esc(job.type)}</span>
@@ -369,23 +435,27 @@ function renderExperience() {
         </header>
         <div class="timeline-card-body">
           <ul class="timeline-highlights" role="list">
-            ${job.highlights.map(h => `<li class="timeline-highlight">${esc(h)}</li>`).join('')}
+            ${job.highlights.map((h) => `<li class="timeline-highlight">${esc(h)}</li>`).join("")}
           </ul>
         </div>
       </article>
-    </div>`).join('');
+    </div>`,
+    )
+    .join("");
 
-  inject('experience-timeline', timelineHTML);
+  inject("experience-timeline", timelineHTML);
 
   // Education panel
   const edu = D.education[0];
   const fields = [
-    { label: 'degree', value: edu.degree },
-    { label: 'gpa', value: edu.gpa, className: 'gpa' },
-    { label: 'duration', value: `${edu.startDate} → ${edu.endDate}` },
+    { label: "degree", value: edu.degree },
+    { label: "gpa", value: edu.gpa, className: "gpa" },
+    { label: "duration", value: `${edu.startDate} → ${edu.endDate}` },
   ];
 
-  inject('education-panel', `
+  inject(
+    "education-panel",
+    `
     <div class="education-panel-header">
       <i class="ph ph-graduation-cap" aria-hidden="true"></i>
       <span class="education-panel-title">// Education</span>
@@ -393,21 +463,30 @@ function renderExperience() {
     <div class="education-body reveal">
       <p class="education-institution">${esc(edu.institution)}</p>
       <p class="education-faculty secondary">${esc(edu.faculty)}</p>
-      ${fields.map(f => `
+      ${fields
+        .map(
+          (f) => `
         <div class="education-field">
           <span class="education-field-label">${esc(f.label)}</span>
-          <span class="education-field-value ${f.className || ''}">${esc(f.value)}</span>
-        </div>`).join('')}
-    </div>`);
+          <span class="education-field-value ${f.className || ""}">${esc(f.value)}</span>
+        </div>`,
+        )
+        .join("")}
+    </div>`,
+  );
 
   if (D.certifications && D.certifications.length > 0) {
-    inject('certifications-panel', `
+    inject(
+      "certifications-panel",
+      `
       <div class="education-panel-header">
         <i class="ph ph-certificate" aria-hidden="true"></i>
         <span class="education-panel-title">// Certifications</span>
       </div>
       <div class="education-body reveal">
-        ${D.certifications.map(c => `
+        ${D.certifications
+          .map(
+            (c) => `
           <div style="margin-bottom: 20px;">
             <p class="education-institution" style="font-size: 0.85rem;"><a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 4px;" aria-label="View ${esc(c.name)} Certificate">${esc(c.name)} <i class="ph ph-arrow-square-out" style="font-size: 0.9em; color: var(--accent);"></i></a></p>
             <p class="education-faculty secondary" style="font-size: 0.75rem; margin-bottom: 8px;">${esc(c.institution)}</p>
@@ -415,11 +494,14 @@ function renderExperience() {
               <span class="education-field-label">date</span>
               <span class="education-field-value mono" style="font-size: 0.75rem;">${esc(c.date)}</span>
             </div>
-          </div>`).join('')}
-      </div>`);
+          </div>`,
+          )
+          .join("")}
+      </div>`,
+    );
   } else {
-    const el = document.getElementById('certifications-panel');
-    if (el) el.style.display = 'none';
+    const el = document.getElementById("certifications-panel");
+    if (el) el.style.display = "none";
   }
 }
 
@@ -428,30 +510,34 @@ function renderExperience() {
    ═══════════════════════════════════════ */
 
 function renderProjects() {
-  const html = D.projects.map((p, i) => {
-    const techTagsHTML = p.techStack.map(t =>
-      `<span class="tech-tag">${esc(t)}</span>`).join('');
+  const html = D.projects
+    .map((p, i) => {
+      const techTagsHTML = p.techStack
+        .map((t) => `<span class="tech-tag">${esc(t)}</span>`)
+        .join("");
 
-    const methodsHTML = p.features.map(f => {
-      // Parse "methodName(params): ReturnType" pattern
-      const match = f.match(/^([^(]+)\(([^)]*)\)(?::\s*(.+))?$/);
-      if (match) {
-        return `<div class="project-method">
-          <span class="method-name">${esc(match[1])}</span><span class="method-params">(${esc(match[2])})</span>${match[3] ? `<span style="color:var(--text-muted)">: </span><span class="method-return">${esc(match[3])}</span>` : ''}
+      const methodsHTML = p.features
+        .map((f) => {
+          // Parse "methodName(params): ReturnType" pattern
+          const match = f.match(/^([^(]+)\(([^)]*)\)(?::\s*(.+))?$/);
+          if (match) {
+            return `<div class="project-method">
+          <span class="method-name">${esc(match[1])}</span><span class="method-params">(${esc(match[2])})</span>${match[3] ? `<span style="color:var(--text-muted)">: </span><span class="method-return">${esc(match[3])}</span>` : ""}
         </div>`;
-      }
-      return `<div class="project-method">${esc(f)}</div>`;
-    }).join('');
+          }
+          return `<div class="project-method">${esc(f)}</div>`;
+        })
+        .join("");
 
-    return `
-    <article class="project-class reveal ${i > 0 ? `reveal-delay-${Math.min(i % 3 + 1, 4)}` : ''}">
+      return `
+    <article class="project-class reveal ${i > 0 ? `reveal-delay-${Math.min((i % 3) + 1, 4)}` : ""}">
       <div class="project-class-inner">
         <!-- Front Side -->
         <div class="project-class-front">
           <header class="project-class-header">
             <div class="project-stereotype">&lt;&lt;class&gt;&gt;</div>
             <h3 class="project-class-name">${esc(p.name)}</h3>
-            ${p.subtitle ? `<div class="project-class-subtitle">${esc(p.subtitle)}</div>` : ''}
+            ${p.subtitle ? `<div class="project-class-subtitle">${esc(p.subtitle)}</div>` : ""}
           </header>
 
           <div class="project-attributes">
@@ -500,9 +586,10 @@ function renderProjects() {
         </div>
       </div>
     </article>`;
-  }).join('');
+    })
+    .join("");
 
-  inject('projects-grid', html);
+  inject("projects-grid", html);
 }
 
 /* ═══════════════════════════════════════
@@ -513,31 +600,57 @@ function renderContact() {
   const p = D.personal;
 
   const items = [
-    { href: `mailto:${p.email}`, icon: 'ph ph-envelope', text: p.email, label: 'Email' },
-    { href: p.github, icon: 'ph ph-github-logo', text: 'github.com/George-Raafat', label: 'GitHub' },
-    { href: p.linkedin, icon: 'ph ph-linkedin-logo', text: 'linkedin.com/in/georgeraafat', label: 'LinkedIn' },
-    { href: `tel:${p.phone.replace(/\s/g, '')}`, icon: 'ph ph-phone', text: p.phone, label: 'Phone' },
-    { href: null, icon: 'ph ph-map-pin', text: p.location, label: 'Location' },
+    {
+      href: `mailto:${p.email}`,
+      icon: "ph ph-envelope",
+      text: p.email,
+      label: "Email",
+    },
+    {
+      href: p.github,
+      icon: "ph ph-github-logo",
+      text: "github.com/George-Raafat",
+      label: "GitHub",
+    },
+    {
+      href: p.linkedin,
+      icon: "ph ph-linkedin-logo",
+      text: "linkedin.com/in/georgeraafat",
+      label: "LinkedIn",
+    },
+    {
+      href: `tel:${p.phone.replace(/\s/g, "")}`,
+      icon: "ph ph-phone",
+      text: p.phone,
+      label: "Phone",
+    },
+    { href: null, icon: "ph ph-map-pin", text: p.location, label: "Location" },
   ];
 
-  inject('contact-info', `
+  inject(
+    "contact-info",
+    `
     <h3 class="contact-info-header">Let's Build Something</h3>
     <p class="contact-info-desc secondary">
       Open to backend engineering roles, ERP/system design projects, and collaborations.
       Drop a message or connect on any of the channels below.
     </p>
     <div style="display:flex;flex-direction:column;gap:10px;">
-      ${items.map(item => item.href
-    ? `<a href="${esc(item.href)}" class="contact-item" ${item.href.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="${esc(item.label)}">
+      ${items
+        .map((item) =>
+          item.href
+            ? `<a href="${esc(item.href)}" class="contact-item" ${item.href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""} aria-label="${esc(item.label)}">
              <i class="${esc(item.icon)}" aria-hidden="true"></i>
              <span class="contact-item-text">${esc(item.text)}</span>
            </a>`
-    : `<div class="contact-item" role="listitem" aria-label="${esc(item.label)}">
+            : `<div class="contact-item" role="listitem" aria-label="${esc(item.label)}">
              <i class="${esc(item.icon)}" aria-hidden="true"></i>
              <span class="contact-item-text">${esc(item.text)}</span>
-           </div>`
-  ).join('')}
-    </div>`);
+           </div>`,
+        )
+        .join("")}
+    </div>`,
+  );
 }
 
 /* ═══════════════════════════════════════
@@ -546,8 +659,10 @@ function renderContact() {
 
 function renderFooter() {
   const year = new Date().getFullYear();
-  inject('footer-copy',
-    `// © ${year} ${esc(D.personal.name)} — Built with HTML, CSS &amp; JS`);
+  inject(
+    "footer-copy",
+    `// © ${year} ${esc(D.personal.name)} — Built with HTML, CSS &amp; JS`,
+  );
 }
 
 /* ═══════════════════════════════════════
@@ -576,8 +691,8 @@ function init() {
 }
 
 // Run on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
 }
